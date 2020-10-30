@@ -75,6 +75,7 @@ public final class Main {
 		moveTillWall(paule);
 		paule.turnLeft();
 		moveTillWall(paule);
+		turnAround(paule);
 		
 		
 		
@@ -145,6 +146,7 @@ public final class Main {
 
     	if(paule.readString("Sind sie wirklich fertig?").equals("Ja")){
     		if(paule.getLocation().equals(targetLocation)) {
+    			if(paule.getDirection().equals(Direction.EAST)) {
     			for(int i = 0; i < targetAmountGrain; i++) {
     				if(!paule.mouthEmpty()) {
     					paule.putGrain();
@@ -153,6 +155,9 @@ public final class Main {
     							+ "um den Namen meiner Familie wieder rein zu waschen!");
     					break;
     				}
+    			}
+    			} else {
+    				paule.write("Falsche Richtung!");
     			}
     		} else {
     			paule.write("Falsches Feld!");
